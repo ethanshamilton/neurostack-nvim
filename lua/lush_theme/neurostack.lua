@@ -36,6 +36,7 @@ local theme = lush(function(injected_functions)
     sym("@function.call")({ fg = rose }), -- function calls
     sym("@function.builtin")({ fg = purple }), -- print, len, etc
     sym("@function.method")({ fg = rose }), -- methods
+    sym("@constructor")({ fg = rose }),
 
     sym("@keyword")({ fg = orange, gui = "bold" }), -- def, class, return, etc
     sym("@keyword.function")({ fg = orange }), -- def, lambda
@@ -45,12 +46,14 @@ local theme = lush(function(injected_functions)
     sym("@operator")({ fg = orange }), -- +, -, =, @
     sym("@punctuation.bracket")({ fg = orange }), -- (), [], {}
     sym("@punctuation.delimiter")({ fg = orange }), -- ,, ;
+    sym("@punctuation.special")({ fg = orange }),
+    sym("@string.escape")({ fg = purple }),
 
     sym("@string")({ fg = blue }),
     sym("@number")({ fg = blue }),
     sym("@boolean")({ fg = blue }),
     sym("@constant")({ fg = blue }),
-    sym("@constant.builtin.python")({ fg = orange }),
+    sym("@constant.builtin")({ fg = orange }),
 
     sym("@type")({ fg = rose }), -- class names
     sym("@type.builtin")({ fg = rose }), -- int, str, etc
@@ -59,7 +62,16 @@ local theme = lush(function(injected_functions)
     sym("@property")({ fg = rose }),
 
     -- markdown
-    sym("@markup.heading")({ fg = orange }),
+    sym("@markup.heading")({ fg = orange, gui = "bold" }),
+    sym("@markup.raw")({ fg = rose }),
+    sym("@markup.raw.block")({ bg = gray.darken(70) }),
+    sym("@markup.link")({ fg = blue, gui = "underline" }),
+    sym("@markup.list")({ fg = orange }),
+
+    -- HTML
+    sym("@tag")({ fg = orange }),
+    sym("@tag.builtin")({ fg = fg }),
+    sym("@tag.attribute")({ fg = purple }),
 
     -- ui elements
     LineNr({ fg = gray }),
@@ -74,6 +86,13 @@ local theme = lush(function(injected_functions)
     Pmenu({ fg = fg }),
     PmenuSel({ bg = orange, fg = bg, gui = "bold" }),
     PmenuThumb({ bg = orange, fg = bg }),
+    LspReferenceRead({ bg = blue.darken(40) }),
+    LspReferenceWrite({ bg = purple.darken(50) }),
+
+    -- git elements
+    GitSignsAdd({ fg = purple.darken(30) }),
+    GitSignsChange({ fg = blue.lighten(20) }),
+    GitSignsDelete({ fg = rose.darken(20) }),
 
     -- snacks
     SnacksDashboardHeader({ fg = fg, gui = "bold" }),
@@ -97,6 +116,8 @@ local theme = lush(function(injected_functions)
     -- diagnostics
     DiagnosticError({ fg = error }),
     DiagnosticWarn({ fg = warn }),
+    DiagnosticUnnecessary({ gui = "strikethrough" }),
+    DiagnosticUnderlineError({ bg = rose.darken(60) }),
   }
 end)
 return theme
