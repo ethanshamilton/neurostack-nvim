@@ -58,6 +58,9 @@ local theme = lush(function(injected_functions)
     sym("@attribute")({ fg = orange }), -- decorators
     sym("@property")({ fg = rose }),
 
+    -- markdown
+    sym("@markup.heading")({ fg = orange }),
+
     -- ui elements
     LineNr({ fg = gray }),
     CursorLine({ bg = bg.lighten(5) }),
