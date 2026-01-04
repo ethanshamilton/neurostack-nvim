@@ -68,6 +68,12 @@ local theme = lush(function(injected_functions)
     sym("@markup.link")({ fg = blue, gui = "underline" }),
     sym("@markup.list")({ fg = orange }),
 
+    -- rust
+    sym("@lsp.type.enumMember")({ fg = fg }),
+    sym("@lsp.type.decorator.rust")({ fg = rose }),
+    sym("@lsp.type.derive")({ fg = purple }),
+    sym("@lsp.type.property.rust")({ fg = fg }),
+
     -- HTML
     sym("@tag")({ fg = orange }),
     sym("@tag.builtin")({ fg = fg }),
